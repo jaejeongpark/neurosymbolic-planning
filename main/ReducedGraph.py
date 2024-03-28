@@ -180,7 +180,7 @@ class ReducedGraph(object):
 if __name__ == "__main__":
     random.seed(0)
 
-    root = './data/'
+    root = os.getcwd()+'/data/'
 
     #root = './data_16angles_40/'
 
@@ -213,4 +213,4 @@ if __name__ == "__main__":
         fout_name = root + 'reduced_graph'
         with open(fout_name, 'wb') as fout:
             pickle.dump(reduced_graph, fout)
-        fout.close()  
+        fout.close()

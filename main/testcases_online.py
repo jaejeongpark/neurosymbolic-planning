@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pickle
 import time
@@ -55,7 +56,8 @@ def generate_traj(nn_controller, test_transit_dict, offline_nns, use_online_nns,
         state = [0.9, 2.3, 4.11]
 
     else:
-        assert False, 'config not defined'
+        state = [1.5,1.5,0.4]
+        # assert False, 'config not defined'
 
 
     print('\nInitial state:', state)
@@ -79,10 +81,10 @@ if __name__ == "__main__":
     # During test, whether use saved NNs that were previously trained online.
     use_online_nns  = True
     
-    offline_configs = [1]
-    test_configs    = [2]
+    offline_configs = [0]
+    test_configs    = [0]
 
-    root = './data/'
+    root = os.getcwd()+ '/data/'
 
     #root = './data_16angles_40/' 
 
@@ -98,7 +100,7 @@ if __name__ == "__main__":
     traj_dir          = root + 'traj_c' + str(test_configs[0])
 
     save_online_nns   = False
-    save_traj         = True
+    save_traj         = False
 
     if not test:
         copy_models(offline_configs, root, model_project_dir, model_exist_dir)
@@ -141,4 +143,4 @@ if __name__ == "__main__":
         if save_traj:
             with open(traj_dir, 'wb') as fout:
                 pickle.dump(traj_dict, fout)
-            fout.close()          
+            fout.close()

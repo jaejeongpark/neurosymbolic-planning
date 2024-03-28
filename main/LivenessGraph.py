@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from copy import deepcopy
 import pickle
@@ -286,7 +287,7 @@ class LivenessGraph(object):
 
 if __name__ == "__main__":
 
-    root = './data/'
+    root = os.getcwd()+'/data/'
 
     #root = './data_16angles_40/'
 

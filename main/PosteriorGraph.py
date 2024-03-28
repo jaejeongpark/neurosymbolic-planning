@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from scipy.io import loadmat
 import pickle
@@ -399,7 +400,7 @@ class PosteriorGraph(object):
 
 if __name__ == "__main__":
     
-    root = './data/'
+    root = os.getcwd()+'/data/'
 
     #root = './cav_backup/scalability_grid/data_w1_552_320/' 
     #root = './cav_backup/scalability_linear/data_n10/' 

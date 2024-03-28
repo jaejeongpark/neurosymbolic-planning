@@ -5,10 +5,16 @@ from LivenessGraph import *
 from Environment import *
 
 # TensorFlow 1.15.5
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Dense
-from tensorflow.keras import backend as K
-from tensorflow.keras.optimizers import Adam
+# from tensorflow.keras.models import Model
+# from tensorflow.keras.layers import Input, Dense
+# from tensorflow.keras import backend as K
+# from tensorflow.keras.optimizers import Adam
+
+# TensorFlow 2.15
+from keras.models import Model
+from keras.layers import Input, Dense
+from keras import backend as K
+from keras.optimizers import Adam
 
 
 class PPOAgent(object):

@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pickle
 from sklearn.gaussian_process import GaussianProcessRegressor
@@ -46,7 +47,7 @@ class GP():
 
 if __name__ == '__main__':
 
-    root = './data/'
+    root = os.getcwd()+'/data/'
 
     load_reduced_graph = True
     if load_reduced_graph:

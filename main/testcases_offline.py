@@ -108,7 +108,7 @@ if __name__ == "__main__":
     project_configs = [1]
     test_configs    = [1]
 
-    root = './data/'
+    os.getcwd()+'/data/'
 
     #root = './data_16angles_40/'   
     

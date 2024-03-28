@@ -231,7 +231,7 @@ class SafetyReducedGraph(PosteriorGraph):
 
 if __name__ == "__main__":
 
-    root = './data/'
+    root = os.getcwd()+'/data/'
     
     #root = './data_16angles_40/'
 

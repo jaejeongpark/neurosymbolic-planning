@@ -1,0 +1,13 @@
+# Ignore all .log files
+*.log
+
+# Ignore a specific directory
+__pycache__/
+
+# Ignore a specific file
+config/api_keys.txt
+
+# Ignore all files with a specific name regardless of their directory
+Thumbs.db
+.DS_Store
+
