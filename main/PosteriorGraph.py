@@ -404,8 +404,8 @@ if __name__ == "__main__":
 
     #root = './cav_backup/scalability_grid/data_w1_552_320/' 
     #root = './cav_backup/scalability_linear/data_n10/' 
-    load_cells_file = root+'cells.mat'
-    load_post_file = root+'posteriors.mat'
+    load_cells_file = root+'cells_jj.mat'
+    load_post_file = root+'posteriors_test.mat'
     post_graph = PosteriorGraph()
     states_low, states_up, posteriors_low, posteriors_up = post_graph.load_files(load_cells_file, load_post_file)
     post_graph.construct(states_low, states_up, posteriors_low, posteriors_up)

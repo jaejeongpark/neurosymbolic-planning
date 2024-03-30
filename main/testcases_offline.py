@@ -101,8 +101,8 @@ def check_control_gains(nn_controller, traj_dict, transition_dict):
 
 if __name__ == "__main__":
     np.random.seed(0)
-    train   = False
-    project = True
+    train   = True
+    project = False
 
     train_configs   = [1]
     project_configs = [1]

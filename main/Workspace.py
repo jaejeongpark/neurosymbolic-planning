@@ -179,16 +179,16 @@ class Workspace(object):
             o1_low = [0, 0.0] + [-const.inf] * (x_dim-2)
             o1_up  = [5, 0.5] + [ const.inf] * (x_dim-2)
             o1 = [o1_low, o1_up]
-            #o2_low = [0, 2] + [-const.inf] * (x_dim-2)
-            #o2_up  = [1, 3] + [ const.inf] * (x_dim-2)
-            #o2 = [o2_low, o2_up]
-            #o3_low = [2.5, 2] + [-const.inf] * (x_dim-2)
-            #o3_up  = [5.0, 3] + [ const.inf] * (x_dim-2)
-            #o3 = [o3_low, o3_up]
+            o2_low = [0, 2] + [-const.inf] * (x_dim-2)
+            o2_up  = [1, 3] + [ const.inf] * (x_dim-2)
+            o2 = [o2_low, o2_up]
+            o3_low = [2.5, 2] + [-const.inf] * (x_dim-2)
+            o3_up  = [5.0, 3] + [ const.inf] * (x_dim-2)
+            o3 = [o3_low, o3_up]
             o4_low = [1.0, 4.5] + [-const.inf] * (x_dim-2)
             o4_up  = [3.5, 5.0] + [ const.inf] * (x_dim-2)
             o4 = [o4_low, o4_up]
-            self.obstacles = [o1, o4]
+            self.obstacles = [o1, o2, o3, o4]
 
         else:
             assert False, 'workspace is undefined'
@@ -318,7 +318,7 @@ class Workspace(object):
 if __name__ == "__main__":
     # Partition state and controller space, then save the resulting cells. 
     
-    save_file = './data/cells.mat'
+    save_file = './data/cells_jj.mat'
 
     wks = Workspace()
     wks.set_config()

@@ -210,7 +210,7 @@ if __name__ == "__main__":
 
     save_reduced_graph = True
     if save_reduced_graph:        
-        fout_name = root + 'reduced_graph'
+        fout_name = root + 'reduced_graph_test'
         with open(fout_name, 'wb') as fout:
             pickle.dump(reduced_graph, fout)
         fout.close()
