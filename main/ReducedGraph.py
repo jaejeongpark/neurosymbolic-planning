@@ -186,7 +186,7 @@ if __name__ == "__main__":
 
     load_post_graph = True
     if load_post_graph:
-        fin_name = root + 'post_graph'
+        fin_name = root + 'post_graph_test'
         with open(fin_name, 'rb') as fin:
             post_graph = pickle.load(fin)
         fin.close()

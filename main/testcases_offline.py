@@ -118,10 +118,10 @@ if __name__ == "__main__":
     #root = './data_0220/'          # No reduce; layer size 10; updates 200; runners 16
     
     post_graph_dir    = root + 'post_graph'
-    ppo_agent_dir     = root + 'ppo_agent'
+    ppo_agent_dir     = root + 'ppo_agent_test'
     nn_controller_dir = root + 'nn_controller'
-    model_ppo_dir     = root + 'models_ppo/'
-    model_project_dir = root + 'models_project/'    
+    model_ppo_dir     = root + 'models_ppo_test/'
+    model_project_dir = root + 'models_project_test/'
     
     model_test_dir = model_project_dir
     traj_dir       = root + 'traj_c' + str(test_configs[0])
