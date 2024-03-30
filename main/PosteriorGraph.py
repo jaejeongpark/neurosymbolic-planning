@@ -425,7 +425,7 @@ if __name__ == "__main__":
 
     save_post_graph = True
     if save_post_graph:        
-        fout_name = root+'post_graph'
+        fout_name = root+'post_graph_test'
         with open(fout_name, 'wb') as fout:
             pickle.dump(post_graph, fout)
         fout.close()
