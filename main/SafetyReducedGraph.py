@@ -239,7 +239,7 @@ if __name__ == "__main__":
 
     load_reduced_graph = True
     if load_reduced_graph:
-        fin_name = root + 'reduced_graph'
+        fin_name = root + 'reduced_graph_test'
         with open(fin_name, 'rb') as fin:
             reduced_graph = pickle.load(fin)
         fin.close()    
