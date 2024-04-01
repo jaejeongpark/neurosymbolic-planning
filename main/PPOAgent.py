@@ -5,17 +5,24 @@ from LivenessGraph import *
 from Environment import *
 
 # TensorFlow 1.15.5
-# from tensorflow.keras.models import Model
-# from tensorflow.keras.layers import Input, Dense
-# from tensorflow.keras import backend as K
-# from tensorflow.keras.optimizers import Adam
+import tensorflow as tf
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, Dense
+from tensorflow.keras import backend as K
+from tensorflow.keras.optimizers import Adam
 
 # TensorFlow 2.15
-from keras.models import Model
-from keras.layers import Input, Dense
-from keras import backend as K
-from keras.optimizers import Adam
+# import tensorflow as tf
+# from keras.models import Model
+# from keras.layers import Input, Dense
+# from keras import backend as K
+# from keras.optimizers import Adam
 
+# # TensorFlow 2.15 w/ tensorflow python
+# from tensorflow.python.keras.models import Model
+# from tensorflow.python.keras.layers import Input, Dense
+# from tensorflow.python.keras import backend as K
+# from tensorflow.python.keras.optimizer_v1 import Adam
 
 class PPOAgent(object):
     def __init__(self):
@@ -33,7 +40,6 @@ class PPOAgent(object):
         self.max_traj_length = 4
         self.fit_epochs = 10
         self.fit_batch_size  = 256
-        
     def check_theta(self):     
         """ After normalization in PosteriorGraph, lower bound of theta should be within [0, 2*pi), while upper bound could be greater than 2*pi """
         for node in self.node_dict.values():
@@ -51,9 +57,9 @@ class PPOAgent(object):
         old_prediction = Input(shape=(self.u_dim,), name='old_prediction')
         x = Dense(self.actor_layer_size, activation='relu')(state_input)
         out_action = Dense(self.u_dim, name='out_action')(x)
-        model = Model(inputs=[state_input, advantage, old_prediction], outputs=[out_action])
+        model = Model(inputs=[state_input, advantage, old_prediction], outputs=[out_action])        
         model.compile(
-            optimizer=Adam(lr=self.learning_rate),
+            optimizer=Adam(learning_rate=self.learning_rate),
             loss=[self.ppo_loss(advantage=advantage, old_prediction=old_prediction)]
             )
         #model.summary()
@@ -67,7 +73,7 @@ class PPOAgent(object):
             x = Dense(self.critic_layer_size, activation='relu')(x)
         out_value = Dense(1, name='out_value')(x)
         model = Model(inputs=[state_input], outputs=[out_value])
-        model.compile(optimizer=Adam(lr=self.learning_rate), loss='mse')
+        model.compile(optimizer=Adam(learning_rate=self.learning_rate), loss='mse')
         #model.summary()
         return model
 
@@ -83,6 +89,15 @@ class PPOAgent(object):
             old_prob = old_prob_num/denom
             r = prob/(old_prob + 1e-10)
             clip_loss = -K.mean(K.minimum(r * advantage, K.clip(r, min_value=1-self.loss_clipping, max_value=1+self.loss_clipping) * advantage))
+            # Tensorflow 2.15
+            # var = tf.square(self.std_deviation)
+            # denom = tf.sqrt(2 * np.pi * var)
+            # prob_num = tf.exp(-tf.square(y_true - y_pred) / (2 * var))
+            # old_prob_num = tf.exp(-tf.square(y_true - old_prediction) / (2 * var))
+            # prob = prob_num/denom
+            # old_prob = old_prob_num/denom
+            # r = prob/(old_prob + 1e-10)
+            # clip_loss = -tf.mean(tf.minimum(r * advantage, tf.clip_by_value(r, min_value=1-self.loss_clipping, max_value=1+self.loss_clipping) * advantage))
             return clip_loss
         return loss 
 

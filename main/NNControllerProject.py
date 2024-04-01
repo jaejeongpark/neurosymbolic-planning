@@ -6,10 +6,7 @@ import polytope as pc
 from PPOAgent import *
 
 # TensorFlow 1.15.5
-# from tensorflow.keras.models import Sequential
-
-# TensorFlow 2.15
-from keras.models import Sequential
+from tensorflow.keras.models import Sequential
 
 class NNControllerProject(PPOAgent):
     def __init__(self):
